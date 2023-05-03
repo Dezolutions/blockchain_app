@@ -1,12 +1,12 @@
 import React from "react"
-
-import './App.css'
+import { Navbar, TransactionForm } from "./components"
 
 const App :React.FC = () => {
 
   return (
-    <div>
-      Hello world
+    <div className="app">
+      <Navbar/>
+      <TransactionForm/>
     </div>
   )
 }
