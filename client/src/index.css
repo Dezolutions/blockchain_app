@@ -2,7 +2,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  font-size: 16px;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -12,6 +12,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  
+  /* If you want to change HEX value of --main-button-bg variable 
+  you have to change values for rgb variable as well*/
+  --main-button-bg: #00247e;
+  --main-button-bg--rgb: 0, 36, 126;
+  
+  --hover-color: #37b3c6;
 }
 
 body {
@@ -20,8 +27,8 @@ body {
   min-height: 100vh;
   background-color:#0f0e13;
   background-image: 
-    radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-    radial-gradient(at 50% 0%, rgb(28, 41, 78) 0, transparent 50%), 
+    radial-gradient(at 0% 0%, rgb(23, 16, 54) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, rgb(16, 36, 92) 0, transparent 50%), 
     radial-gradient(at 100% 0%, rgb(15, 106, 117) 0, transparent 50%);
 }
 a{

@@ -1,13 +1,14 @@
 import React from 'react'
+import './transactionForm.css'
 
 const TransactionForm :React.FC = () => {
   return (
-    <div>
+    <fieldset className='form-block'>
       <input placeholder='Address to' type="text" />
       <input placeholder='Amount (ETH)' type="number" />
       <input placeholder='Enter Message' type="text" />
-      <button type="button">Send</button>
-    </div>
+      <button className='transaction-btn' type="button">Send</button>
+    </fieldset>
   )
 }
 
