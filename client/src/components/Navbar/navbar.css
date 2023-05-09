@@ -1,4 +1,4 @@
-.header {
+.header-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
@@ -7,6 +7,15 @@
 
 .header-logo__item {
   width: 10rem;
+}
+
+.header__burger-menu {
+  display: none;
+  cursor: pointer;
+}
+
+.header__burger-close {
+  cursor: pointer;
 }
 
 .header__nav-list {

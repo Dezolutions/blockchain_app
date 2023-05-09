@@ -10,6 +10,7 @@
 }
 .heading-block__subtitle {
   font-size: 1rem;
+  margin: 1rem 0;
 }
 .heading-block__wallet-btn {
   font-size: 1rem;
@@ -69,6 +70,7 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 .eth-card {
+  position: relative;
   background-color:#a099ff;
   background-image: 
     radial-gradient(at 83% 67%, rgb(152, 231, 156) 0, transparent 58%), 
@@ -78,4 +80,28 @@
     radial-gradient(at 27% 71%, hsla(336,91%,65%,1) 0, transparent 49%), 
     radial-gradient(at 74% 89%, hsla(30,98%,65%,1) 0, transparent 51%), 
     radial-gradient(at 53% 75%, hsla(174,94%,68%,1) 0, transparent 45%);
+}
+
+.eth-card__eth-icon {
+  position: absolute;
+  top: 6%;
+  left: 5%;
+  border: 1px solid white;
+  padding: 0.5rem;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  border-radius: 100%;
+}
+
+.eth-card__info-icon {
+  position: absolute;
+  top: 6%;
+  right: 5%;
+}
+
+.eth-card__info-block {
+  position: absolute;
+  bottom: 6%;
+  left: 5%;
 }
