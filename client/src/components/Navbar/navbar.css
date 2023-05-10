@@ -17,7 +17,9 @@
 .header__burger-close {
   cursor: pointer;
 }
-
+.header__nav-block {
+  justify-self: end;
+}
 .header__nav-list {
   list-style: none;
   margin: 0;
