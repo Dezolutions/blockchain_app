@@ -3,15 +3,24 @@ import TransactionForm from '../TransactionForm/TransactionForm'
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
 import './main.css'
+import { TransactionContext } from '../../context/TransactionContext';
+import { TransactionContextInterface } from '../../types/contractTypes';
 
 const Main :React.FC = () => {
+
+  const { connectWallet, currentAccount } = React.useContext<TransactionContextInterface>(TransactionContext)
+
+  const onBtnClick = () => {
+    connectWallet?.()
+  }
+
   return (
     <div className='container'>
       <main className='main'>
           <div className="main__heading-block">
             <h1 className="heading-block__title">Send Crypto <br /> across the world</h1>
             <p className="heading-block__subtitle">Explore the crypto world. Buy and sell cryptocurrencies easily.</p>
-            <button className="heading-block__wallet-btn">Connect Wallet</button>
+            <button className="heading-block__wallet-btn" onClick={onBtnClick}>Connect Wallet</button>
           </div>
           <div className="heading-block__items">
             <div className="item">Reliability</div>
@@ -26,7 +35,7 @@ const Main :React.FC = () => {
               <div className='eth-card__eth-icon'><SiEthereum fontSize={26} color="#fff" /></div>
               <div className='eth-card__info-icon'><BsInfoCircle fontSize={20} color="#fff" /></div>
               <div className='eth-card__info-block'>
-                <p className='eth-card__address'>...</p>
+                <p className='eth-card__address'>{currentAccount || '...'}</p>
                 <p className='eth-card__currency'>Ethereum</p>
               </div>
             </div>
