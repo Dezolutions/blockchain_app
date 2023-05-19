@@ -10,7 +10,6 @@ describe("Transactions Contract", function () {
   let receiver: SignerWithAddress;
   const amount = 100;
   const message = "Test message";
-  const keyword = "Test keyword";
 
   beforeEach(async function () {
     [owner, receiver] = await ethers.getSigners();
@@ -21,10 +20,7 @@ describe("Transactions Contract", function () {
   });
 
   it("should add a transaction to the blockchain", async function () {
-    await transactionsContract.addToBlockchain(receiver.address, amount, message, keyword);
-
-    const transactionCount = await transactionsContract.getTransactionCount();
-    expect(transactionCount).to.equal(1);
+    await transactionsContract.addToBlockchain(receiver.address, amount, message);
 
     const transactions = await transactionsContract.getAllTransactions();
     expect(transactions.length).to.equal(1);
@@ -34,11 +30,10 @@ describe("Transactions Contract", function () {
     expect(transaction.receiver).to.equal(receiver.address);
     expect(transaction.amount).to.equal(amount);
     expect(transaction.message).to.equal(message);
-    expect(transaction.keyword).to.equal(keyword);
   });
 
   it("should emit a Transfer event", async function () {
-    const tx = await transactionsContract.addToBlockchain(receiver.address, amount, message, keyword);
+    const tx = await transactionsContract.addToBlockchain(receiver.address, amount, message);
     const receipt = await tx.wait();
 
     expect(receipt.events?.length).to.equal(1);
@@ -49,6 +44,5 @@ describe("Transactions Contract", function () {
     expect(event?.args?.receiver).to.equal(receiver.address);
     expect(event?.args?.amount).to.equal(amount);
     expect(event?.args?.message).to.equal(message);
-    expect(event?.args?.keyword).to.equal(keyword);
   });
 });

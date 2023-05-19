@@ -1,0 +1,27 @@
+.transacitons {
+  padding: 2rem 0;
+}
+.transaction-card{
+  background: rgba(var(--main-button-bg--rgb), 0.2);
+  padding: 1rem 0 0;
+  border-radius: 0.5rem;
+}
+.transaction-card__date {
+  text-align: center;
+  background-color: var(--hover-color);
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.transaction-card__line {
+  padding: 0 1rem;
+}
+.adress-link {
+  text-decoration: underline;
+}
+.transactions-block {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+}

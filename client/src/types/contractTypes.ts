@@ -1,4 +1,4 @@
-import { BigNumber,ContractTransaction } from "ethers";
+import { BigNumber,Contract,ContractTransaction } from "ethers";
 
 export interface TransferStruct {
   receiver: string;
@@ -7,22 +7,35 @@ export interface TransferStruct {
     toNumber: () => number;
   };
   message: string;
-  keyword: string;
   amount: {
     _hex: string;
   };
 }
+export interface StructuredTransaction {
+  addressTo: string,
+  addressFrom: string,
+  timestamp: string,
+  message: string,
+  amount: number
+}
+
+export interface InputData {
+  placeholder: string,
+  name: keyof FormData,
+  type: string,
+  value?: string,
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>, name: keyof FormData) => void,
+  disabled: boolean
+}
 export interface FormData {
   addressTo: string;
   amount: string;
-  keyword: string;
   message: string;
 }
 
 export interface TransactionContextInterface  {
-  transactionCount : string | null,
   connectWallet: () => void,
-  transactions: TransferStruct[],
+  transactions: StructuredTransaction[],
   currentAccount: string,
   isLoading: boolean,
   sendTransaction: () => void,
@@ -30,10 +43,7 @@ export interface TransactionContextInterface  {
   formData: FormData,
 }
 
-export interface TransactionsInterface {
-  
-  addToBlockchain(receiver: string, amount: BigNumber | number, message: string, keyword: string): Promise<ContractTransaction>;
+export interface TransactionsInterface extends Contract{
+  addToBlockchain(receiver: string, amount: BigNumber | number, message: string): Promise<ContractTransaction>;
   getAllTransactions(): Promise<TransferStruct[]>;
-  getTransactionCount(): Promise<BigNumber | number>;
-  
 }

@@ -6,7 +6,6 @@ export interface TransferStruct {
   amount: BigNumber | number;
   message: string;
   timestamp: BigNumber;
-  keyword: string;
 }
 
 export interface Transactions extends TransactionsInterface, TransactionsOverrides {
@@ -15,13 +14,11 @@ export interface Transactions extends TransactionsInterface, TransactionsOverrid
 }
 
 export interface TransactionsInterface {
-  addToBlockchain(receiver: string, amount: BigNumber | number, message: string, keyword: string): Promise<ContractTransaction>;
+  addToBlockchain(receiver: string, amount: BigNumber | number, message: string): Promise<ContractTransaction>;
   getAllTransactions(): Promise<TransferStruct[]>;
-  getTransactionCount(): Promise<BigNumber | number>;
 }
 
 export interface TransactionsOverrides {
-  addToBlockchain(receiver: string, amount: BigNumber | number, message: string, keyword: string): Promise<ContractTransaction>;
+  addToBlockchain(receiver: string, amount: BigNumber | number, message: string): Promise<ContractTransaction>;
   getAllTransactions(): Promise<TransferStruct[]>;
-  getTransactionCount(): Promise<BigNumber | number>;
 }
