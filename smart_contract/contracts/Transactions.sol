@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
 import "hardhat/console.sol";
@@ -24,5 +25,9 @@ contract Transactions {
 
     function getAllTransactions() public view returns (TransferStruct[] memory) {
         return transactions;
+    }
+
+    function getBalance(address walletAddress) public view returns (uint256) {
+        return address(walletAddress).balance;
     }
 }

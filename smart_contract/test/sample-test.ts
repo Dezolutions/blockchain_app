@@ -45,4 +45,10 @@ describe("Transactions Contract", function () {
     expect(event?.args?.amount).to.equal(amount);
     expect(event?.args?.message).to.equal(message);
   });
+  it("should return the correct balance of a wallet", async function () {
+    const walletAddress = "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4";
+    const balance = await transactionsContract.getBalance(walletAddress);
+
+    expect(balance).to.equal(ethers.constants.Zero);
+  });
 });

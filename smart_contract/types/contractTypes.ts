@@ -16,9 +16,11 @@ export interface Transactions extends TransactionsInterface, TransactionsOverrid
 export interface TransactionsInterface {
   addToBlockchain(receiver: string, amount: BigNumber | number, message: string): Promise<ContractTransaction>;
   getAllTransactions(): Promise<TransferStruct[]>;
+  getBalance(walletAddress: string): Promise<number>
 }
 
 export interface TransactionsOverrides {
   addToBlockchain(receiver: string, amount: BigNumber | number, message: string): Promise<ContractTransaction>;
   getAllTransactions(): Promise<TransferStruct[]>;
+  getBalance(walletAddress: string): Promise<number>
 }

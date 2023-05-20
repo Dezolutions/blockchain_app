@@ -10,7 +10,7 @@ import { shortenAddress } from '../../utils/shortenAddress';
 
 const Main :React.FC = () => {
 
-  const { connectWallet, currentAccount } = React.useContext<TransactionContextInterface>(TransactionContext)
+  const { connectWallet, currentAccount, balance } = React.useContext<TransactionContextInterface>(TransactionContext)
 
   const onBtnClick = () => {
     connectWallet?.()
@@ -21,7 +21,7 @@ const Main :React.FC = () => {
       <main className='main'>
           <div className="main__heading-block">
             <h1 className="heading-block__title">Send Crypto <br /> across the world</h1>
-            <p className="heading-block__subtitle">Explore the crypto world. Buy and sell cryptocurrencies easily.</p>
+            <p className="heading-block__subtitle">Explore the crypto world. Buy and sell cryptocurrencies easily. Test Application working on <b>Sepolia Network</b> so make sure you chosed the right one on your metamask account </p>
             { !currentAccount  
               ? <button className="heading-block__wallet-btn" onClick={onBtnClick}>Connect Wallet</button>
               : <div className='heading-block__connected'>
@@ -42,6 +42,7 @@ const Main :React.FC = () => {
             <div className='eth-card white-glassmorphism card-item'>
               <div className='eth-card__eth-icon'><SiEthereum fontSize={26} color="#fff" /></div>
               <div className='eth-card__info-icon'><BsInfoCircle fontSize={20} color="#fff" /></div>
+              <div className="eth-card__balance">{balance?.toFixed(7)}<SiEthereum fontSize={16} color="#fff" /></div>
               <div className='eth-card__info-block'>
                 <b className='eth-card__address'>{shortenAddress(currentAccount) || '...'}</b>
                 <p className='eth-card__currency'>Ethereum</p>

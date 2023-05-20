@@ -23,6 +23,7 @@ export interface InputData {
   placeholder: string,
   name: keyof FormData,
   type: string,
+  max?: number,
   value?: string,
   handleChange: (e: React.ChangeEvent<HTMLInputElement>, name: keyof FormData) => void,
   disabled: boolean
@@ -38,6 +39,7 @@ export interface TransactionContextInterface  {
   transactions: StructuredTransaction[],
   currentAccount: string,
   isLoading: boolean,
+  balance: number,
   sendTransaction: () => void,
   handleChange: (e: React.ChangeEvent<HTMLInputElement>,name: keyof FormData) => void,
   formData: FormData,
@@ -46,4 +48,5 @@ export interface TransactionContextInterface  {
 export interface TransactionsInterface extends Contract{
   addToBlockchain(receiver: string, amount: BigNumber | number, message: string): Promise<ContractTransaction>;
   getAllTransactions(): Promise<TransferStruct[]>;
+  getBalance(walletAddress: string) : Promise<number>;
 }

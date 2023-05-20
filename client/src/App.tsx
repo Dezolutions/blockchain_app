@@ -1,5 +1,5 @@
 import React from "react"
-import { Navbar, Main,Transactions } from "./components"
+import { Navbar, Main,Transactions, Footer } from "./components"
 
 const App :React.FC = () => {
 
@@ -8,6 +8,7 @@ const App :React.FC = () => {
       <Navbar/>
       <Main/>
       <Transactions/>
+      <Footer/>
     </div>
   )
 }

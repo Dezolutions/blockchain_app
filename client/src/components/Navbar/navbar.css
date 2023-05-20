@@ -21,12 +21,9 @@
   justify-self: end;
 }
 .header__nav-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  display: flex;
+  gap: 3rem;
+  font-weight: 700;
 }
 .nav-item {
   font-size: 1rem;

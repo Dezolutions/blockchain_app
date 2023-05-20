@@ -18,12 +18,26 @@ export const TransactionProvider = ({children} :any) => {
   const [formData, setformData] = React.useState<FormData>({ addressTo: "", amount: "", message: "" });
   const [currentAccount, setCurrentAccount] = React.useState<string>("");
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [balance, setBalance] = React.useState<number>()
   const [transactions, setTransactions] = React.useState<StructuredTransaction[]>([]);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>, name: keyof FormData) => {
     setformData((prevState) => ({ ...prevState, [name]: e.target.value }));
   };
-
+  const getBalance = async (walletAddress: string): Promise<void> => {
+    try {
+      if (ethereum) {
+        
+        const transactionsContract = createEthereumContract();
+        const balanceWei = await transactionsContract.getBalance(walletAddress)
+        setBalance(balanceWei / (10 ** 18))
+      } else {
+        console.log("Ethereum is not present");
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const getAllTransactions = async () :Promise<void> => {
     try {
       if (ethereum) {
@@ -55,6 +69,7 @@ export const TransactionProvider = ({children} :any) => {
 
       if (accounts.length) {
         setCurrentAccount(accounts[0]);
+        getBalance(accounts[0])
         getAllTransactions();
       } else {
         console.log("No accounts found");
@@ -71,7 +86,7 @@ export const TransactionProvider = ({children} :any) => {
       const accounts = await ethereum.request({ method: "eth_requestAccounts", });
 
       setCurrentAccount(accounts[0]);
-      
+      getBalance(accounts[0])
     } catch (error) {
       console.log(error);
 
@@ -103,6 +118,8 @@ export const TransactionProvider = ({children} :any) => {
         await transactionHash.wait();
         console.log(`Success - ${transactionHash.hash}`);
         setIsLoading(false);
+        getAllTransactions()
+        getBalance(currentAccount)
       } else {
         console.log("No ethereum object");
       }
@@ -116,7 +133,7 @@ export const TransactionProvider = ({children} :any) => {
     checkIfWalletIsConnect()
   },[])
   return (
-    <TransactionContext.Provider value={{connectWallet, currentAccount, handleChange, sendTransaction, transactions, formData, isLoading}}>
+    <TransactionContext.Provider value={{connectWallet, balance, currentAccount, handleChange, sendTransaction, transactions, formData, isLoading}}>
       {children}
     </TransactionContext.Provider>
   )

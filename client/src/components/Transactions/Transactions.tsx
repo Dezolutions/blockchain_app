@@ -17,11 +17,12 @@ const Transactions :React.FC = () => {
             {transactions.length
               ? transactions.map((transaction: StructuredTransaction) => 
               <div key={transaction.timestamp} className='transaction-card'>
-                <p className='transaction-card__line'><b>From:</b> <a className='adress-link' target="_blank" href={`https://sepolia.etherscan.io/address/${transaction.addressFrom}`}>{shortenAddress(transaction.addressFrom)}</a></p>
-                <p className='transaction-card__line'><b>To:</b> {shortenAddress(transaction.addressTo)}</p>
-                <p className='transaction-card__line'><b>Amount:</b> {transaction.amount}ETH</p>
-                <p className='transaction-card__line'><b>Message:</b> {transaction.message}</p>
-                <p className='transaction-card__date'>{transaction.timestamp}</p>
+                <div className="transaction-card__title">Transaction</div>
+                <div className='transaction-card__line'><b>From:</b><a className='adress-link' target="_blank" href={`https://sepolia.etherscan.io/address/${transaction.addressFrom}`}>{shortenAddress(transaction.addressFrom)}</a></div>
+                <div className='transaction-card__line'><b>To:</b><a className='adress-link' target="_blank" href={`https://sepolia.etherscan.io/address/${transaction.addressTo}`}>{shortenAddress(transaction.addressTo)}</a></div>
+                <div className='transaction-card__line'><b>Amount:</b><p>{transaction.amount}ETH</p></div>
+                <div className='transaction-card__line'><b>Message:</b><p>{transaction.message}</p></div>
+                <div className='transaction-card__date'>{transaction.timestamp}</div>
               </div>)
               : <p>No recent transactions for now</p>
             }

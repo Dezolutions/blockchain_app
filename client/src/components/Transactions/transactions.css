@@ -3,7 +3,6 @@
 }
 .transaction-card{
   background: rgba(var(--main-button-bg--rgb), 0.2);
-  padding: 1rem 0 0;
   border-radius: 0.5rem;
 }
 .transaction-card__date {
@@ -14,8 +13,18 @@
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
 }
+.transaction-card__title {
+  text-align: center;
+  background-color: rgba(var(--main-button-bg--rgb), 0.5);
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
 .transaction-card__line {
   padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
 }
 .adress-link {
   text-decoration: underline;
