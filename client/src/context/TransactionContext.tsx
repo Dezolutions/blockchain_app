@@ -87,6 +87,7 @@ export const TransactionProvider = ({children} :any) => {
 
       setCurrentAccount(accounts[0]);
       getBalance(accounts[0])
+      getAllTransactions()
     } catch (error) {
       console.log(error);
 
