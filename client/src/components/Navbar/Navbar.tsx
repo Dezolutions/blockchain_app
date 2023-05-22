@@ -10,7 +10,7 @@ const Navbar :React.FC = () => {
   const [toggleMenu, setToggleMenu] = React.useState<boolean>(false);
 
   return (
-    <header className='header'>
+    <div className='header-nav'>
       <div className='container'>
         <div className='header-grid'>
           <div className="header-logo">
@@ -29,7 +29,7 @@ const Navbar :React.FC = () => {
           </nav>
         </div>
       </div>
-    </header>
+    </div>
   )
 }
 
