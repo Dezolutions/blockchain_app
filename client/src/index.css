@@ -55,6 +55,9 @@ p,ul {
 }
 
 @media  screen and (max-width: 960px) {
+  .header {
+    height: auto;
+  }
   .main {
     grid-template-columns: 1fr;
     padding-bottom: 70px;
